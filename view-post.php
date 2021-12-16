@@ -81,7 +81,8 @@
 											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 												<h4><strong><?= $row['title']; ?></strong></h4>
 												<p><strong>by <?= $name ?></strong><br><?= $row['dates']; ?></p>
-                                                <center><img src="img/<?php echo $row['image']; ?>" style=" height: 450px;"></center>
+                                                <p><center><img src="img/<?php echo $row['image']; ?>" style=" height: 450px;"></center> </p>
+                                                
 												<p align="justify"><?= $row['content']; ?></p>
 											</div>
 										</div>
