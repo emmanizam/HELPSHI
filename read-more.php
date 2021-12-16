@@ -41,9 +41,9 @@
                     <div class="col-md-4">
                         <div class="top-bar-right">
                             <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
+                                <a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
