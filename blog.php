@@ -55,7 +55,7 @@
         <!-- Nav Bar Start -->
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
-            <a href="dashboard.html"><img src="assets/img/dashboardlogo.png" alt="logo" class="app-logo"></a></nav>
+            <a href="index.php"><img src="assets/img/dashboardlogo.png" alt="logo" class="app-logo"></a></nav>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
