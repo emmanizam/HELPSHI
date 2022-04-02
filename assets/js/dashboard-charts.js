@@ -1,37 +1,41 @@
-var trafficchart = document.getElementById("trafficflow");
+//var trafficchart = document.getElementById("trafficflow");
 var saleschart = document.getElementById("sales");
 
-// new
-var myChart1 = new Chart(trafficchart, {
-type: 'line',
-data: {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    datasets: [{
-        data: ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1100', '1200'],
-        backgroundColor: "rgba(48, 164, 255, 0.2)",
-        borderColor: "rgba(48, 164, 255, 0.8)",
-        fill: true,
-        borderWidth: 1
-    }]
-},
-options: {
-    animation: {
-        duration: 2000,
-        easing: 'easeOutQuart',
+    var trafficchart = document.getElementById("trafficflow");
+    
+    // new
+    var myChart1 = new Chart(trafficchart, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+            data: ['<? echo $total[0]; ?>', '<? echo $total[1]; ?>', '<? echo $total[2]; ?>', '<? echo $total[3]; ?>', '<? echo $total[4]; ?>', '<? echo $total[5]; ?>', '0<? echo $total[6]; ?>', '<? echo $total[7]; ?>', '<? echo $total[8]; ?>', '<? echo $total[9]; ?>', '<? echo $total[10]; ?>', '<? echo $total[11]; ?>'],
+            backgroundColor: "rgba(48, 164, 255, 0.2)",
+            borderColor: "rgba(48, 164, 255, 0.8)",
+            fill: true,
+            borderWidth: 1
+        }]
     },
-    plugins: {
-        legend: {
-            display: false,
-            position: 'right',
+    options: {
+        animation: {
+            duration: 2000,
+            easing: 'easeOutQuart',
         },
-        title: {
-            display: true,
-            text: 'Amount of Fund Raised',
-            position: 'left',
+        plugins: {
+            legend: {
+                display: false,
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Amount of Donation',
+                position: 'left',
+            },
         },
-    },
-}
-});
+    }
+    });
+
+
 
 // new
 var myChart2 = new Chart(saleschart, {

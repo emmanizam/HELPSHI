@@ -19,7 +19,7 @@
         <div id="body" class="active">
             <!-- navbar navigation component -->
             <nav class="navbar navbar-expand-lg navbar-white bg-pastelpink">
-				<a href="dashboard.html"><img src="assets/img/dashboardlogo.png" alt="logo" class="app-logo"></a>
+				<a href="dashboard.html"><img src="assets/img/logo/dashboardlogo.png" alt="logo" class="app-logo"></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ms-auto">
                         <li class="nav-item dropdown">
@@ -33,7 +33,7 @@
                                         <div class="dropdown-divider"></div>
 										<li><a href="users.php" class="dropdown-item"><i class="fas fa-user-friends" style="color: rgb(134, 37, 77)"></i> Users</a></li>
                                         <div class="dropdown-divider"></div>
-                                        <li><a href="index.php" class="dropdown-item"><i class="fas fa-sign-out-alt" style="color: rgb(134, 37, 77)"></i> Logout</a></li>
+                                        <li><a href="logout.php" class="dropdown-item"><i class="fas fa-sign-out-alt" style="color: rgb(134, 37, 77)"></i> Logout</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -66,24 +66,51 @@
 								<div class="card-body">
 									<div class="account-settings">
 										<div class="user-profile">
-											<div class="user-avatar">
-										    	<img src="img/<?php echo $row['profilePic']; ?>"/>   
+											<div class="user-avatar">  
 												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <img src="assets/img/user/<?php echo $row['profilePic']; ?>"/> 
 													<h4><strong><?= $row['name']; ?></strong></h4>
-													<h5><?= $row['email']; ?></h5>
+													<h5><?= $currentUser ?></h5>
 													<p><?= $row['tel']; ?></p>
 												</div>
 												<a href="updateprofile.php"> <button type="button" id="submit" name="submit" class="btn btn-success">Update</button></a>
-												<a href="delete-process.php"> <button type="button" id="delete" name="delete" class="btn btn-danger">Delete</button></a>
+												<a href="#"> <button type="submit" name="submit" class="btn btn-danger">Delete</button></a>
+												<!--<a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>-->
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						
-						
 					</div>
+					<!--Delete Conformation Model-->
+                    <!--<div class="col-lg-6">
+                        <div class=""> 
+                            <div class="card-body text-center">
+                                <div class="modal fade" id="deleteModal" role="dialog" tabindex="-1">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h2 class="modal-title">Delete Confirmation</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-start">
+                                        <form accept-charset="utf-8">
+                                            <div class="mb-3">
+                                                <label for="month" class="form-label">Are you sure you want to permanently delete this post?<br>This process cannot be undone.</label>
+                                            </div>
+                                            <div class="mb-3" align="center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                                <a href="delete-profile.php" type="submit" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
 				</div>
 			</div>
 			<?php

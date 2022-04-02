@@ -1,51 +1,12 @@
-<head>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="img/logoatas.png">
-    <title>HELPSHI Admin</title>
-    <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
-    <link href="assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/vendor/DataTables/datatables.css" rel="stylesheet">
-    <link href="assets/css/master.css" rel="stylesheet">
-</head>
+<?php include "header_admin.php";?>
 
-<body>
-    <div class="wrapper">
-        <div id="body" class="active">
-            <!-- navbar navigation component -->
-            <nav class="navbar navbar-expand-lg navbar-white bg-pastelpink">
-                <a href="dashboard.html"><img src="assets/img/dashboardlogo.png" alt="logo" class="app-logo"></a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <div class="nav-dropdown">
-                                <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user" style="color: rgb(134, 37, 77)"></i>  <i style="font-size: .8em; color: rgb(134, 37, 77)" class="fas fa-caret-down"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end nav-link-menu">
-                                    <ul class="nav-list">
-                                        <li><a href="profile.php" class="dropdown-item"><i class="fas fa-address-card" style="color: rgb(134, 37, 77)"></i> Profile</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a href="users.php" class="dropdown-item"><i class="fas fa-user-friends" style="color: rgb(134, 37, 77)"></i> Users</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a  href="logout.php" class="dropdown-item"><i class="fas fa-sign-out-alt" style="color: rgb(134, 37, 77)"></i> Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <!-- end of navbar navigation -->
             <!-- start of blog components -->
             <div class="content">
                 <div class="container">
                     <div class="page-title">
-                        <h3>Blog Posts
-                            <a href="create-post.php" class="btn btn-sm btn-outline-primary float-end "><i class="fas fa-plus-circle"></i> Add</a>
+                        <h3>Manage Blog 
+                            <a href="create-post.php" class="btn btn-sm btn-outline-success float-end "><i class="fas fa-plus-circle"></i> Add Post</a>
+                            <a href="dashboard.php" class="btn btn-sm btn-outline-primary float-end me-1"><i class="fas fa-caret-left"></i><span class="btn-header"> Return</span></a>
                         </h3>
                     </div>
                     <div class="box box-primary">
@@ -82,7 +43,7 @@
                                         <td class="text-end">
                                             <a href="view-post.php?id= <?php echo $currentPost ?>" class="btn btn-info btn-rounded"><i class="fas fa-eye"></i></a>
                                             <a href="update-post.php?id= <?php echo $currentPost ?>" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
-                                            <a href="delete-post.php?id= <?php echo $currentPost ?>" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></a>
+                                            <button type="button" class="btn btn-outline-danger btn-rounded" data-id="<?php echo $currentPost ?>" onclick="confirmDelete(this);"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     <?php
@@ -91,17 +52,53 @@
                                     else{
                                         echo "No results found";
                                     }
-                                    
-                                    $conn->close();
                                     ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    <!---Delete confirmation modal starts here-->
+                    <div id="deleteModal" class="modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Delete Post</h4>
+                                    <button type="button" class="close" data-bs-dismiss="modal">×</button>
+                                </div>
+                    
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete this post?<br>This process cannot be undone</p>
+                                    <form method="POST" action="delete-post.php" id="form-delete-post">
+                                        <input type="hidden" name="id">
+                                    </form>
+                                </div>
+                    
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" form="form-delete-post" class="btn btn-danger">Delete</button>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <!---Delete confirmation modal ends here-->
+                    <?php
+                        
+                    $conn->close();
+                    ?>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function confirmDelete(self) {
+        var id = self.getAttribute("data-id");
+    
+        document.getElementById("form-delete-post").id.value = id;
+        $("#deleteModal").modal("show");
+    }
+    </script>
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/datatables/datatables.min.js"></script>

@@ -1432,27 +1432,6 @@ a:focus {
     border-radius: 0;
 }
 
-.contact .contact-form .btn {
-    padding: 12px 25px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #F7CAC9;
-    background: #e89ec4;
-    border-radius: 0;
-    transition: .3s;
-}
-
-.contact .contact-form .btn:hover {
-    color: #e89ec4;
-    background: #F7CAC9;
-}
-
-.contact .help-block ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
 
 /*******************************/
 /********* Login CSS **********/
@@ -1462,7 +1441,7 @@ a:focus {
   }
   
   .form-control {
-    margin-bottom: 10px;
+    
     padding-bottom: 20px;
     position: relative;
   }
@@ -1481,7 +1460,12 @@ a:focus {
     padding: 10px;
     width: 100%;
   }
-  
+
+  .form-control select {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
   .form-control input:focus {
     outline: 0;
     border-color: #777;
@@ -1927,10 +1911,6 @@ a:focus {
     left: 1px;
 }
 
-.sidebar .category-widget ul li span {
-    display: inline-block;
-    float: right;
-}
 
 .sidebar .sidebar-widget .tag-widget {
     position: relative;
@@ -2094,5 +2074,6 @@ a:focus {
         text-align: center;
     }
 }
+
 
 

@@ -17,7 +17,7 @@
         <div id="body" class="active">
             <!-- navbar navigation component -->
             <nav class="navbar navbar-expand-lg navbar-white bg-pastelpink">
-				<a href="dashboard.html"><img src="assets/img/dashboardlogo.png" alt="logo" class="app-logo"></a>
+				<a href="dashboard.html"><img src="assets/img/logo/dashboardlogo.png" alt="logo" class="app-logo"></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ms-auto">
                         <li class="nav-item dropdown">
@@ -63,7 +63,7 @@
 							
 								<div class="card h-10">
 									<div class="card-body">
-										<form action="" method="POST" >
+										<form action="" method="POST" enctype="multipart/form-data" >
 											<div class="row gutters">
 												<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 													<div class="form-group">
@@ -89,7 +89,7 @@
 												</div>
 												<div class="mb-3">
 												<label class="form-label">Image</label>
-												<input class="form-control" name="img" type="file" id="img">
+												<input class="form-control" name="image" type="file" id="image" >
 												<small class="text-muted">The image must have a maximum size of 1MB</small>
 											</div>	
 											</div>
@@ -121,9 +121,21 @@
 				$title = $_POST['title'];
 				$content = $_POST['content'];
 				//$img = addslashes(file_get_contents($img));
-				$img = $_POST['image'];
-				$sqlCreate = "INSERT INTO blog (title, dates, content, img, author_email) 
-					VALUES ('$title', '$currentDate', '$content', '$currentUser', '$img')";
+				$image =$_FILES['image']['name'];
+                        $dir = "assets/img/blog/";
+                        $file = $dir . basename($_FILES['image']['name']);
+                        move_uploaded_file($_FILES['image']['tmp_name'],$dir.$image);
+                        $imageFileType = strtolower(pathinfo($dir,PATHINFO_EXTENSION));
+                        
+                        $extensions_arr = array("jpg","jpeg","png","gif");
+                        if( in_array($imageFileType,$extensions_arr) ){
+                                
+                        
+                        
+                        }
+				    
+				$sqlCreate = "INSERT INTO blog (title, dates, content, image, author_email) 
+					VALUES ('$title', '$currentDate', '$content', '$image', '$currentUser')";
 				$insert = $conn->query($sqlCreate);
 
 				if($insert)

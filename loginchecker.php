@@ -4,7 +4,7 @@ include('DB.php');
 
 $email = $_POST['email'];
 $password = $_POST['password'];
-//to prevent from mysqli injection  
+//to prevent from mysqli injection
 $sql = "select * from admin where email = '$email' and password = '$password'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -14,16 +14,15 @@ if ($count == 1) {
     $_SESSION["emailSession"] = $email;
     $_SESSION["useremail"] = $email;
     $_SESSION["userpassword"] = $password;
-    echo '<script>alert("Login Successful!")</script>';
-    header("Location: dashboard.html");
-    
+    echo '<script type = "text/javascript"> alert("Login Successful!");
+    window.location.replace("dashboard.php"); </script>';
+
 }
 else {
 // $_SESSION['loginErr'] = "error";
     $_SESSION['status'] = "Fail";
     $_SESSION['msg'] = "Invalid " . ucfirst($table)  . " email or Password";
-    echo '<script>alert("Login Successful!")</script>';
-    header("Location: login.php");
+    echo '<script type = "text/javascript"> alert("Login Unsuccessful!");
+    window.location.replace("login.php"); </script>';
 }
 ?>
-

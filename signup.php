@@ -18,10 +18,10 @@
                         include 'DB.php';       
                     ?>
                     <div class="mb-4">
-                        <img class="brand" src="assets/img/authlogo.png" alt="logo">
+                        <img class="brand" src="assets/img/logo/authlogo.png" alt="logo">
                     </div>
                     <h6 class="mb-4 text-muted">Create new account</h6>
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="mb-3 text-start">
                             <label for="name" class="form-label">Name</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter Name" required>
@@ -32,17 +32,18 @@
                         </div>
                         <div class="mb-3 text-start">
                             <label for="tel" class="form-label">Phone Number</label>
-                            <input name="tel" type="password" class="form-control" placeholder="Enter Phone Number" required>
+                            <input name="tel" type="tel" class="form-control" pattern="[0]{1}[0-9]{}-[0-9]{7}" placeholder="Enter Phone Number" required>
                         </div>
                         <div class="mb-3 text-start">
                             <label for="password" class="form-label">Password</label>
-                            <input name="password" type="password" class="form-control" placeholder="Enter Password" required>
+                            <input name="password" type="password" class="form-control" minlength="8" placeholder="Enter Password" required>
                         </div>
                         <div class="mb-5 text-start">
                             <label class="form-label">Profile Picture</label><br>
-                            <input class="" name="profilePic" type="file" id="profilePic">
+                            <input class="" name="image" type="file" id="image">
                         </div>
-                        <input type="submit" name="create" value ="Create" class="btn btn-primary"></input>
+                        <input type="submit" name="create" value ="Create" class="btn btn-success"></input>
+                        <a href="users.php"> <button type="button" class="btn btn-secondary">  Cancel  </button></a>
                     </form>
                     <?php
 
@@ -52,23 +53,32 @@
                         $email = $_POST['email'];
                         $password = $_POST['password'];
                         $tel = $_POST['tel'];
-                        $image = $_POST['profilePic'];
-                        $sqlCreate = "INSERT INTO admin (email, password, name, tel, profilePic) 
-                                VALUES ('$email', '$password', '$name', '$tel' , '$image')";
+                        $role = "Admin";
+                        $image =$_FILES['image']['name'];
+                        $dir = "assets/img/admin/";
+                        $file = $dir . basename($_FILES['image']['name']);
+                        move_uploaded_file($_FILES['image']['tmp_name'],$dir.$image);
+                        $imageFileType = strtolower(pathinfo($dir,PATHINFO_EXTENSION));
+                        
+                        $extensions_arr = array("jpg","jpeg","png","gif");
+                        if( in_array($imageFileType,$extensions_arr) ){
+                                
+                        
+                        
+                        }
+                        $sqlCreate = "INSERT INTO admin (email, password, name, tel, role, profilePic) 
+                                VALUES ('$email', '$password', '$name', '$tel' , '$role','$image')";
                         $insert = $conn->query($sqlCreate);
-
-
-                        if($insert)
-                        {
-                            echo '<script type = "text/javascript"> alert("Data Updated") </script>';
+                        
+                        if ($insert) {
+                            echo '<script type = "text/javascript"> alert("Account is successfully created"); window.location.replace("users.php"); </script>';
+                        } else {
+                            $_SESSION['msg'] = "Error creating account " . $conn->error;
+                            $_SESSION['status'] = "Fail";
                         }
-                        else
-                        {
-                            echo '<script type = "text/javascript"> alert("Data Not Updated") </script>';
-                        }
-                        header('Location: users.php');
+                        echo "<meta http-equiv='refresh' content='0'>";
+                        
                     }
-
                     $conn->close();
                     ?>
                 </div>

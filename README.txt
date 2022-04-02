@@ -1,17 +1,31 @@
-Update: 2am 14/11/2021 by Emma 
-Update: 12.29am 16/11/2021 by Hidayah 
-Update: 2:27pm 16/11/2021 by piqa 
-Update: 8.30pm 17/11/2021 by Emma 
+Users
+1. Super Admin
+- login required
+- can perform all admin features - manage crowdfund, manage blog, manage report, manage profile
+- can access all database
+- can delete other users but cannot delete themselves
+
+2. Admin
+- login required
+- can perform all admin features - manage crowdfund, manage blog, manage report, manage profile
+- can access all database
+- can delete themselves but cannot delete other users
+
+3. Public
+- no login 
+- can perform all public features - make donation, contact admin, read blog posts
+- can view blog database only
 
 
-SPRINT 1
-1. Create (done)
-2. Login, loginchecker (verification) (done)
-3. Update (done)
-4. Log out (done)
-5. Delete
-6. Admin dashboard (done)
-7. Donors/Public interface (done)
-8. Reset Password 
-9. Users (done)
-10. DB.php - to connect database (done)
+Disclaimer
+- bank account integrated to the payment gateway is owned by Siti Fatimah Az Zahra for educational purpose only
+and not for real crowdfund.
+- email stated is not real email and for educational purpose only
+- name, email and other information in the database are for educational purpose only might or might not be owned 
+by anyone
+
+System is developed by GIT Group
+1. Siti Fatimah Az Zahra
+2. Hidayah Hamri
+3. Nursyafiqah
+3. Aqilah Hanim

@@ -14,17 +14,17 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="mb-4">
-                        <img class="brand" src="assets/img/authlogo.png" alt="logo">
+                        <img class="brand" src="img/logo/authlogo.png" alt="logo">
                     </div>
                     <h6 class="mb-4 text-muted">Admin Login</h6>
                     <form action="loginchecker.php" method="POST">
                         <div class="mb-3 text-start">
-                            <label id="email" class="form-label">Email adress</label>
+                            <label id="email" class="form-label">Email Address</label>
                             <input name="email" type="email" class="form-control" placeholder="Enter Email" required>
                         </div>
                         <div class="mb-3 text-start">
                             <label id="password" class="form-label">Password</label>
-                            <input name="password" type="password" class="form-control" placeholder="Password" required>
+                            <input name="password" type="password" class="form-control" placeholder="Password" minlength="8" required>
                         </div>
                         <div class="mb-3 text-start">
                             <!--div class="form-check">
@@ -34,10 +34,8 @@
                               </label>
                             </div-->
                         </div>
-                        <button type ="submit" class="btn btn-primary shadow-2 mb-4">Login</button>
+                        <button type ="submit"class="btn btn-success shadow-2 mb-4">Login</button>
                     </form>
-                    <p class="mb-2 text-muted">Forgot password? <a href="forgot-password.html">Reset</a></p>
-                    <!--p class="mb-0 text-muted">Don't have account yet? <a href="signup.html">Signup</a></p-->
                 </div>
             </div>
         </div>
