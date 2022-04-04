@@ -6,8 +6,8 @@ $amount = $_POST['amount'];
 
 $rmx100=($amount*100);
   $some_data = array(
-    'userSecretKey'=>'bgiejq1g-u1fm-950x-e5bu-jplcatdlpdym',
-    'categoryCode'=>'a5e7yywt',
+    'userSecretKey'=>'',
+    'categoryCode'=>'',
     'billName'=>'HELPSHI Donation',
     'billDescription'=>'Donation Amount RM'.$amount,
     'billPriceSetting'=>1,
